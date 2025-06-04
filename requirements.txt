@@ -1,0 +1,7 @@
+ollama
+langchain
+langchain-community
+chromadb
+unstructured
+pypdf
+python-dotenv
