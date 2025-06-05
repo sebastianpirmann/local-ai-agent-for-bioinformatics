@@ -20,6 +20,7 @@ The assistant integrates a local LLM (like Mistral), a local Embedding Model (No
 
 The repository is structured to organize the various components of the AI assistant:
 
+```text
 personal-bio-ai-assistant/  (Your project root)
 ├── .venv/                   # Python Virtual Environment
 ├── .vscode/                 # VS Code specific settings
@@ -38,7 +39,7 @@ personal-bio-ai-assistant/  (Your project root)
 ├── .gitignore               # Specifies files/folders to be ignored by Git
 ├── README.md                # This file
 └── requirements.txt         # List of Python dependencies
-
+```
 
 ## Setup and Installation
 
@@ -61,20 +62,22 @@ cd personal-ai-agent-for-bioinformatics
 ## 2. Install Ollama Models
 Download the required LLM and Embedding models using Ollama:
 
-Bash
-
+```bash
 ollama pull mistral
 ollama pull nomic-embed-text
+```
+
 Ensure these models are listed when you run ollama list.
 
 ## 3. Set up Python Virtual Environment
 It's highly recommended to use a virtual environment to manage project dependencies.
 
-Bash
-
+```bash
 python3 -m venv .venv
 source .venv/bin/activate  # On macOS/Linux
-# .\.venv\Scripts\activate   # On Windows (PowerShell)
+.\.venv\Scripts\activate   # On Windows (PowerShell)
+```
+
 ## 4. Install Python Dependencies
 Install all necessary Python libraries using pip:
 
