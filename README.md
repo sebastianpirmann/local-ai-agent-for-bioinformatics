@@ -55,9 +55,11 @@ Follow these steps to set up the project on your local machine.
 
 ## 1. Clone the Repository
 
-git clone [https://github.com/YOUR_GITHUB_USERNAME/personal-ai-agent-for-bioinformatics.git](https://github.com/YOUR_GITHUB_USERNAME/personal-ai-agent-for-bioinformatics.git)
+```bash
+git clone [https://github.com/sebastianpirmann/personal-ai-agent-for-bioinformatics.git](https://github.com/sebastianpirmann/personal-ai-agent-for-bioinformatics.git)
+
 cd personal-ai-agent-for-bioinformatics
-(Replace YOUR_GITHUB_USERNAME with your actual GitHub username and adjust the repository name if you named it differently.)
+```
 
 ## 2. Install Ollama Models
 Download the required LLM and Embedding models using Ollama:
@@ -81,7 +83,9 @@ source .venv/bin/activate  # On macOS/Linux
 ## 4. Install Python Dependencies
 Install all necessary Python libraries using pip:
 
+```bash
 pip install -r requirements.txt
+```
 
 ## 5. Configure VS Code (Recommended)
 To ensure VS Code correctly uses your virtual environment and understands project imports:
@@ -92,14 +96,15 @@ Open the Command Palette (Ctrl/Cmd + Shift + P) and select Python: Select Interp
 
 Ensure a .vscode/settings.json file exists in your project root with the following content. If it doesn't exist, create the .vscode/ folder and then settings.json inside it.
 
-JSON
-
+```json
 {
     "python.defaultInterpreterPath": ".venv/bin/python",
     "python.analysis.extraPaths": [
         "./src"
     ]
 }
+```
+
 Restart VS Code after making these changes.
 
 # Usage
@@ -109,7 +114,9 @@ Place your bioinformatics documents (PDFs, .txt, .md, .py, .R, .sh files, etc.) 
 ### 2. Build the Knowledge Base (Vector Database)
 (This step is to be implemented. It will involve running a script to process the data/ files and populate chromadb.)
 
+```bash
 python3 -m src.utils.build_knowledge_base
+```
 
 ### 3. Interact with the AI Assistant
 (This will be the final step, involving a command-line interface or a simple web UI for asking questions.)
