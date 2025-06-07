@@ -5,11 +5,15 @@ from config import CHUNK_SIZE, CHUNK_OVERLAP
 import os
 from typing import List
 
+
 class DocumentProcessor:
     """
     Handles loading and splitting of documents for the knowledge base.
     """
-    def __init__(self, chunk_size: int = CHUNK_SIZE, chunk_overlap: int = CHUNK_OVERLAP):
+
+    def __init__(
+        self, chunk_size: int = CHUNK_SIZE, chunk_overlap: int = CHUNK_OVERLAP
+    ):
         """
         Initializes the DocumentProcessor with specified chunking parameters.
         Args:
@@ -22,7 +26,9 @@ class DocumentProcessor:
             length_function=len,
             is_separator_regex=False,
         )
-        print(f"DocumentProcessor initialized with chunk_size={chunk_size}, chunk_overlap={chunk_overlap}")
+        print(
+            f"DocumentProcessor initialized with chunk_size={chunk_size}, chunk_overlap={chunk_overlap}"
+        )
 
     def load_documents_from_directory(self, directory_path: str) -> List[Document]:
         """
@@ -47,15 +53,17 @@ class DocumentProcessor:
                         print(f"Loaded PDF: {file_name}")
                     except Exception as e:
                         print(f"Error loading PDF {file_name}: {e}")
-                elif file_name.endswith((".txt", ".md", ".py", ".R", ".sh")): # Add more as needed
+                elif file_name.endswith(
+                    (".txt", ".md", ".py", ".R", ".sh")
+                ):  # Add more as needed
                     try:
-                        loader = TextLoader(file_path, encoding='utf-8')
+                        loader = TextLoader(file_path, encoding="utf-8")
                         loaded_documents.extend(loader.load())
                         print(f"Loaded Text/Code: {file_name}")
                     except Exception as e:
                         print(f"Error loading text/code file {file_name}: {e}")
                 else:
-                    # print(f"Skipping unsupported file type: {file_name}") # Optional: uncomment for verbose output
+                    print(f"Skipping unsupported file type: {file_name}")
                     pass
 
         print(f"Total documents loaded: {len(loaded_documents)}")
@@ -77,33 +85,37 @@ class DocumentProcessor:
         print(f"Original documents split into {len(chunks)} chunks.")
         return chunks
 
-# Example usage (for testing purposes, will be removed later)
+
+# Example usage for testing purposes
 if __name__ == "__main__":
     # Create a dummy data directory and some files for testing
     test_data_dir = "temp_test_data"
     os.makedirs(test_data_dir, exist_ok=True)
 
     with open(os.path.join(test_data_dir, "test_bio_notes.txt"), "w") as f:
-        f.write("Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data. "
-                "It combines computer science, statistics, mathematics, and engineering to analyze and interpret biological data. "
-                "Key areas include sequence analysis, genomics, proteomics, and transcriptomics.")
+        f.write(
+            "Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data. "
+            "It combines computer science, statistics, mathematics, and engineering to analyze and interpret biological data. "
+            "Key areas include sequence analysis, genomics, proteomics, and transcriptomics."
+        )
 
     with open(os.path.join(test_data_dir, "test_code.py"), "w") as f:
-        f.write("def calculate_gc_content(sequence):\n"
-                "    gc_count = sequence.count('G') + sequence.count('C')\n"
-                "    return (gc_count / len(sequence)) * 100 if sequence else 0\n"
-                "\n"
-                "dna_sequence = 'AGCTCGAGCT'\n"
-                "print(f'GC Content: {calculate_gc_content(dna_sequence)}%')")
+        f.write(
+            "def calculate_gc_content(sequence):\n"
+            "    gc_count = sequence.count('G') + sequence.count('C')\n"
+            "    return (gc_count / len(sequence)) * 100 if sequence else 0\n"
+            "\n"
+            "dna_sequence = 'AGCTCGAGCT'\n"
+            "print(f'GC Content: {calculate_gc_content(dna_sequence)}%')"
+        )
 
-    # Note: For PDF testing, you'd need a real PDF file.
-    # If you have one, place it in 'temp_test_data' or your 'data/' folder.
+    # Note: For PDF testing, we need a real PDF file.
 
-    processor = DocumentProcessor(chunk_size=200, chunk_overlap=50) # Use smaller chunks for demo
+    processor = DocumentProcessor(chunk_size=200, chunk_overlap=50)
 
     print("\n--- Loading Documents Test ---")
     # Ensure DATA_PATH is set correctly in config.py or use the test_data_dir here
-    # For this test, let's use the local test_data_dir
+
     loaded_docs = processor.load_documents_from_directory(test_data_dir)
 
     print("\n--- Splitting Documents Test ---")
