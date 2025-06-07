@@ -1,7 +1,7 @@
 import os
 
 # Path to the directory containing knowledge base data
-DATA_PATH = os.path.join(os.path.dirname(__file__), 'data')
+DATA_PATH = os.path.join(os.path.dirname(__file__), "data")
 
 # Name of the LLM model, used by Ollama (e.g. "mistral", "llama3")
 OLLAMA_LLM_MODEL = "mistral"
@@ -11,7 +11,7 @@ OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
 
 # Path to ChromaDB database
 # Usually in subfolder '.chroma_db'
-CHROMA_DB_PATH = os.path.join(os.path.dirname(__file__), '.chroma_db')
+CHROMA_DB_PATH = os.path.join(os.path.dirname(__file__), ".chroma_db")
 
 # Optional: ChromaDB collection name (name for knowledge base)
 # If several knowledge bases are available, specify the selected one by name
