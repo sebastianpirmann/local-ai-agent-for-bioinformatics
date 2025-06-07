@@ -21,7 +21,7 @@ The assistant integrates a local LLM (like Mistral), a local Embedding Model (No
 The repository is structured to organize the various components of the AI assistant:
 
 ```text
-personal-bio-ai-assistant/  (Your project root)
+personal-bio-ai-assistant/
 ├── .venv/                   # Python Virtual Environment
 ├── .vscode/                 # VS Code specific settings
 │   └── settings.json        # Editor and Python interpreter configuration
@@ -56,7 +56,7 @@ Follow these steps to set up the project on your local machine.
 ## 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/sebastianpirmann/personal-ai-agent-for-bioinformatics.git](https://github.com/sebastianpirmann/personal-ai-agent-for-bioinformatics.git)
+git clone https://github.com/sebastianpirmann/personal-ai-agent-for-bioinformatics.git
 
 cd personal-ai-agent-for-bioinformatics
 ```
