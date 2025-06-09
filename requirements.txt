@@ -5,3 +5,4 @@ chromadb
 unstructured
 pypdf
 python-dotenv
+streamlit
