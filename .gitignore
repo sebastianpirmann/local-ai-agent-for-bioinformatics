@@ -136,8 +136,14 @@ ENV/
 env.bak/
 venv.bak/
 
+# macOS Finder files
+.DS_Store
+
 # Local Ollama/LangChain/ChromaDB data
 .chroma_db/
+
+# User provided documents
+data/
 
 # Spyder project settings
 .spyderproject

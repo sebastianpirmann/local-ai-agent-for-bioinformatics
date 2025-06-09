@@ -28,3 +28,8 @@ CHUNK_SIZE = 1000
 # Overlap between text chunks (in characters)
 # Makes sure important context is not lost at chunk boundaries
 CHUNK_OVERLAP = 200
+
+# Context Mode for RAG Agent
+# "strict": Answer based ONLY on provided context. If not found, state "I don't know".
+# "regular": Prioritize provided context, but if insufficient, use LLM's general knowledge.
+CONTEXT_MODE = "regular"
