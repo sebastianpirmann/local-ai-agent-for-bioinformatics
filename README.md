@@ -109,17 +109,47 @@ Restart VS Code after making these changes.
 
 # Usage
 ### 1. Prepare Your Knowledge Base
-Place your bioinformatics documents (PDFs, .txt, .md, .py, .R, .sh files, etc.) into the data/ directory.
+Place your documents (PDFs, .txt, .md, .py, .R, .sh files, etc.) into the data/ directory.
 
 ### 2. Build the Knowledge Base (Vector Database)
-(This step is to be implemented. It will involve running a script to process the data/ files and populate chromadb.)
+This step processes your documents, converts them into numerical embeddings using the specified embedding model, and stores them in a local ChromaDB instance (by default in the `.chroma_db/` directory).
+This process needs to be run whenever you add, remove, or modify documents in the `data/` directory.
 
 ```bash
 python3 -m src.utils.build_knowledge_base
 ```
 
-### 3. Interact with the AI Assistant
-(This will be the final step, involving a command-line interface or a simple web UI for asking questions.)
+### 3. Configure the AI Assistant
+Open config.py in the root directory of the project.
+Here you can adjust key parameters for your assistant:
+
+OLLAMA_LLM_MODEL: The specific Large Language Model (LLM) to use (e.g., "mistral", "gemma:2b", or a quantized version like "mistral:7b-instruct-v0.2-q3_K_M"). Ensure this model is pulled via Ollama.
+OLLAMA_EMBEDDING_MODEL: The embedding model (e.g., "nomic-embed-text"). Ensure this model is pulled via Ollama.
+CHROMA_DB_PATH: The local directory where your ChromaDB knowledge base is persisted.
+DATA_PATH: The directory where your source documents are located.
+CHUNK_SIZE / CHUNK_OVERLAP: Parameters for how documents are split into smaller pieces.
+CONTEXT_MODE: Defines how the agent uses context from the knowledge base:
+"STRICT": The agent will answer ONLY based on the provided context. If the answer cannot be found in the context, it will truthfully state that it doesn't know.
+"REGULAR": The agent will prioritize the provided context from the knowledge base, but if it's insufficient to answer the question, it will use its general knowledge.
+
+### 4. Interact with the AI Assistant
+Once your knowledge base is built and your configurations are set, you can interact with the assistant:
+
+a) Command-Line Interface (CLI)
+Run the main script to start a text-based conversational interface in your terminal:
+
+```bash
+python3 main.py
+```
+Type exit or quit to end the session.
+
+b) Web User Interface (UI)
+For a more user-friendly and interactive experience, use the Streamlit-powered web interface:
+
+```bash
+streamlit run app.py
+```
+This will open the application in your default web browser (usually at http://localhost:8501).
 
 
 License
