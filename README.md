@@ -25,16 +25,16 @@ personal-bio-ai-assistant/
 ├── .venv/                   # Python Virtual Environment
 ├── .vscode/                 # VS Code specific settings
 │   └── settings.json        # Editor and Python interpreter configuration
-├── data/                    # Directory for your personal bioinformatics documents (PDFs, .txt, .md, code, etc.)
+├── data/                    # Directory for your personal documents (PDFs, .txt, .md, code, etc.)
 ├── src/                     # Source code for the AI assistant
 │   ├── core/                # Core functionalities: LLM and Embedding Handlers
-│   │   ├── llm_handler.py
-│   │   └── embedding_handler.py
 │   ├── utils/               # Utility functions: Document loading & processing
-│   │   └── document_processor.py
+│   ├── knowledge_base/      # Knowledge base creation
 │   └── agents/              # Main agent logic and orchestration
 ├── .chroma_db/              # Local ChromaDB persistent storage (auto-generated)
 ├── config.py                # Centralized project configuration (model names, chunk sizes, paths)
+├── app.py                   # Streamlit UI interface
+├── main.py                  # Command line interface
 ├── .env                     # Environment variables
 ├── .gitignore               # Specifies files/folders to be ignored by Git
 ├── README.md                # This file
@@ -123,14 +123,14 @@ python3 -m src.utils.build_knowledge_base
 Open config.py in the root directory of the project.
 Here you can adjust key parameters for your assistant:
 
-- OLLAMA_LLM_MODEL: The specific Large Language Model (LLM) to use (e.g., "mistral", "gemma:2b", or a quantized version like "mistral:7b-instruct-v0.2-q3_K_M"). Ensure this model is pulled via Ollama.
-- OLLAMA_EMBEDDING_MODEL: The embedding model (e.g., "nomic-embed-text"). Ensure this model is pulled via Ollama.
-- CHROMA_DB_PATH: The local directory where your ChromaDB knowledge base is persisted.
-- DATA_PATH: The directory where your source documents are located.
-- CHUNK_SIZE / CHUNK_OVERLAP: Parameters for how documents are split into smaller pieces.
-- CONTEXT_MODE: Defines how the agent uses context from the knowledge base:
-  - "STRICT": The agent will answer ONLY based on the provided context. If the answer cannot be found in the context, it will truthfully state that it doesn't know.
-  - "REGULAR": The agent will prioritize the provided context from the knowledge base, but if it's insufficient to answer the question, it will use its general knowledge.
+- **OLLAMA_LLM_MODEL**: The specific Large Language Model (LLM) to use (e.g., "mistral", "gemma:2b", or a quantized version like "mistral:7b-instruct-v0.2-q3_K_M"). Ensure this model is pulled via Ollama.
+- **OLLAMA_EMBEDDING_MODEL**: The embedding model (e.g., "nomic-embed-text"). Ensure this model is pulled via Ollama.
+- **CHROMA_DB_PATH**: The local directory where your ChromaDB knowledge base is persisted.
+- **DATA_PATH**: The directory where your source documents are located.
+- **CHUNK_SIZE / CHUNK_OVERLAP**: Parameters for how documents are split into smaller pieces.
+- **CONTEXT_MODE**: Defines how the agent uses context from the knowledge base:
+  - **"STRICT"**: The agent will answer ONLY based on the provided context. If the answer cannot be found in the context, it will truthfully state that it doesn't know.
+  - **"REGULAR"**: The agent will prioritize the provided context from the knowledge base, but if it's insufficient to answer the question, it will use its general knowledge.
 
 ### 4. Interact with the AI Assistant
 Once your knowledge base is built and your configurations are set, you can interact with the assistant:
