@@ -26,7 +26,7 @@ personal-bio-ai-assistant/
 ├── .vscode/                 # VS Code specific settings
 │   └── settings.json        # Editor and Python interpreter configuration
 ├── data/                    # Directory for your personal documents (PDFs, .txt, .md, code, etc.)
-├── src/                     # Source code for the AI assistant
+├── src/                     # Source code
 │   ├── core/                # Core functionalities: LLM and Embedding Handlers
 │   ├── utils/               # Utility functions: Document loading & processing
 │   ├── knowledge_base/      # Knowledge base creation

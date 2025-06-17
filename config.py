@@ -4,7 +4,7 @@ import os
 DATA_PATH = os.path.join(os.path.dirname(__file__), "data")
 
 # Name of the LLM model, used by Ollama (e.g. "mistral", "llama3")
-OLLAMA_LLM_MODEL = "mistral"
+OLLAMA_LLM_MODEL = "gemma:2b"  #
 
 # Name of the Embedding model used by Llama ("nomic-embed-text")
 OLLAMA_EMBEDDING_MODEL = "nomic-embed-text"
@@ -33,3 +33,7 @@ CHUNK_OVERLAP = 200
 # "strict": Answer based ONLY on provided context. If not found, state "I don't know".
 # "regular": Prioritize provided context, but if insufficient, use LLM's general knowledge.
 CONTEXT_MODE = "regular"
+
+# Temperature parameter for LLM (lower values equal more conservative and deterministic answers,
+# while higher values equal more creative answers)
+TEMPERATURE = 0.2

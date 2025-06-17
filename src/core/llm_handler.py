@@ -1,7 +1,7 @@
 from langchain_community.chat_models import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.language_models.chat_models import BaseChatModel
-from config import OLLAMA_LLM_MODEL
+from config import OLLAMA_LLM_MODEL, TEMPERATURE
 
 
 class LLMHandler:
@@ -17,7 +17,7 @@ class LLMHandler:
         """
         self.model_name = model_name
         try:
-            self.model = ChatOllama(model=self.model_name)
+            self.model = ChatOllama(model=self.model_name, temperature=TEMPERATURE)
         except Exception as e:
             print(f"Error initializing Ollama LLM model '{self.model_name}': {e}")
             raise
